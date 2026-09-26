@@ -1,2 +1,36 @@
-Please add your pseudocode to this file
-And a written explanation of your solution
+Solution Description
+--------------------
+The function returns every non-empty consecutive substring. It chooses each
+character as a starting point, then extends a substring to the right, adding
+each version to the result.
+
+Pseudocode
+----------
+FUNCTION consecutiveSubstrings(string):
+	substrings = empty list
+
+	FOR startIndex FROM 0 TO length of string - 1:
+		currentSubstring = empty string
+
+		FOR endIndex FROM startIndex TO length of string - 1:
+			add character at endIndex to currentSubstring
+			add currentSubstring to substrings
+
+	RETURN substrings
+
+Explanation
+-----------
+Treat the string like an array of characters. The outer loop chooses where each
+substring starts. For each starting position, the inner loop moves forward one
+character at a time, extending the current substring and adding it to the result.
+This creates only consecutive substrings, and it orders them by starting position
+and then by increasing length. If the input is empty, the loops do not run and the
+result is an empty list.
+
+For "abc", the substrings are ["a", "ab", "abc", "b", "bc", "c"].
+
+Time Complexity
+---------------
+For an input of length n, the loops run Θ(n^2) times and produce Θ(n^2)
+substrings. Their total length is Θ(n^3), so building and returning all the
+strings takes Θ(n^3) time when counting the character work.
